@@ -1,1 +1,11 @@
-// Action types to be defined here.
+// Action types.
+export const CAT_DETAILS = {
+  SET_LOADING: 'LOADING_CAT_DETAILS',
+  FETCH: 'FETCH_CAT_DETAILS',
+  FETCH_SUCCESS: 'FETCH_CAT_DETAILS_SUCCESS'
+};
+
+export const ERROR = {
+  THROW: 'THROW_ERROR',
+  RESET: 'RESET_ERROR'
+};
