@@ -8,7 +8,7 @@ const initialState = {
   // The current requirement is to filter the pets by Cats. Defining this as a
   // state variable to avoid hard coding it in the filter function and to extend the
   // possibility of adding multiple pet type filters (May be a pet type checkbox
-  // orsomething similar can be implemented in the future)
+  // or something similar can be implemented in the future)
   petTypeToFilterBy: 'Cat',
 
   // Owner genders to be considered. This list can be extended to include
@@ -39,7 +39,7 @@ export default function PetDetailsReducer(state = initialState, action) {
 
 /**
   Function to filter the pet details based on the selected pet type and then to
-  create an object with the owner gender as the key and the filtered pet types
+  create an object with the owner gender as the key and the filtered pets array
   as its value.
 
   The algorithm is as follows :
