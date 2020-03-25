@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPetDetails } from '../../store/actions/pets';
-import { petTypeToFilterBy, ownerGenders } from '../../common/constants';
 
 const mapStateToProps = state => ({
   isLoading: state.pets.isLoadingPetDetails,
-  filteredPetDetails: state.pets.filteredPetDetails
+  filteredPetDetails: state.pets.filteredPetDetails,
+  petType: state.pets.petTypeToFilterBy,
+  ownerGenders: state.pets.ownerGenders
 });
 
 const mapDispatchToProps = dispatch =>
@@ -19,12 +20,12 @@ class PetDetailsPage extends Component {
   }
 
   render() {
-    const { filteredPetDetails } = this.props;
+    const { filteredPetDetails, petType, ownerGenders } = this.props;
     if(!Object.keys(filteredPetDetails).length > 0) return null;
 
     return (
       <div>
-        <h3>{petTypeToFilterBy} Details</h3>
+        <h3>{petType} Details</h3>
         {
           ownerGenders.map(ownerGender => {
             return (

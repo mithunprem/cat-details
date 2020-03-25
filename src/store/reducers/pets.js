@@ -1,10 +1,20 @@
 import { PET_DETAILS } from '../actions/types';
-import { ownerGenders, petTypeToFilterBy } from '../../common/constants';
 
 const initialState = {
   petDetails: [],
   filteredPetDetails: {},
-  isLoadingPetDetails: false
+  isLoadingPetDetails: false,
+
+  // The current requirement is to filter the pets by Cats. Defining this as a
+  // state variable to avoid hard coding it in the filter function and to extend the
+  // possibility of adding multiple pet type filters (May be a pet type checkbox
+  // orsomething similar can be implemented in the future)
+  petTypeToFilterBy: 'Cat',
+
+  // Owner genders to be considered. This list can be extended to include
+  // 'Others', 'Not specified' etc.
+  ownerGenders: ['Male', 'Female']
+
 };
 
 export default function PetDetailsReducer(state = initialState, action) {
@@ -16,10 +26,11 @@ export default function PetDetailsReducer(state = initialState, action) {
       };
     case PET_DETAILS.FETCH_SUCCESS:
       const petDetails = action.petDetails;
+      const { petTypeToFilterBy, ownerGenders } = state;
       return {
         ...state,
         petDetails,
-        filteredPetDetails: filterPetsBySelectedType(petDetails)
+        filteredPetDetails: filterPetsBySelectedType(petDetails, petTypeToFilterBy, ownerGenders)
       };
     default:
       return state;
@@ -39,7 +50,7 @@ export default function PetDetailsReducer(state = initialState, action) {
   5. Set the now filtered, sorted pets array against the gender.
   6. Return from the function once data for all genders are obtained.
 */
-const filterPetsBySelectedType = petDetails => {
+const filterPetsBySelectedType = (petDetails, petTypeToFilterBy, ownerGenders) => {
   // Dont bother proceeding further if petDetails are not available.
   if (!petDetails) return null;
 
