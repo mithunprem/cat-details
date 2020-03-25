@@ -11,7 +11,8 @@ const PetNamesList = ({ petDetails }) => {
           })
         }
       </ul>
-    ) : null
+    ) :
+    <div className="no-data-fallback-div">No data to display!</div>
   );
 }
 
