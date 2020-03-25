@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { fetchPetDetails } from '../../store/actions/pets';
 import { Spinner } from 'react-bootstrap';
 import PetNamesList from '../../components/petNamesList/petNamesListView';
-import '../../styles/petDetails.scss';
 
 const mapStateToProps = state => ({
   isLoading: state.pets.isLoadingPetDetails,
