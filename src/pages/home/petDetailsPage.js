@@ -1,7 +1,7 @@
 import React from "react";
 import PageHeader from '../../components/header/headerView';
 
-const CatDetailsPage = () => {
+const PetDetailsPage = () => {
 
   return (
     <>
@@ -10,4 +10,4 @@ const CatDetailsPage = () => {
   )
 }
 
-export default CatDetailsPage;
+export default PetDetailsPage;
