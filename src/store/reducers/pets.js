@@ -2,6 +2,7 @@ import { PET_DETAILS } from '../actions/types';
 
 const initialState = {
   petDetails: [],
+  catDetails: [],
   isLoadingPetDetails: false
 };
 

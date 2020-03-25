@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-import PetDetailsReducer from './petDetails';
+import PetsReducer from './pets';
 
-export default history =>
-  combineReducers({
-    petDetails: PetDetailsReducer
-  });
+export default combineReducers({
+  pets: PetsReducer
+});
