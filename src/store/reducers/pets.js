@@ -69,7 +69,7 @@ export const filterPetsBySelectedType = (petDetails, petTypeToFilterBy, ownerGen
     // Now, filter the pets based on the pet type.
     petDetailsForGender.map(({ pets }) => {
       const petsFilteredByType =
-        (pets && pets.filter(pet => pet.type === petTypeToFilterBy)) || [];
+        (pets && pets.filter(pet => pet && pet.type === petTypeToFilterBy)) || [];
 
       filteredPets.push(...petsFilteredByType);
 
@@ -78,7 +78,7 @@ export const filterPetsBySelectedType = (petDetails, petTypeToFilterBy, ownerGen
     });
 
     // Sort the pets in the alphabetical order of their name.
-    filteredPets.sort((pet1, pet2) => pet1.name.localeCompare(pet2.name));
+    filteredPets.sort((pet1, pet2) => pet1 && pet1.name.localeCompare(pet2 && pet2.name));
 
     // Set the filtered, sorted pets array in to object against the gender.
     filteredPetsByOwnerGender[ownerGender] = filteredPets;
