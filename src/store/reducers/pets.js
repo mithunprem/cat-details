@@ -1,8 +1,9 @@
 import { PET_DETAILS } from '../actions/types';
+import { ownerGenders, petTypeToFilterBy } from '../../common/constants';
 
 const initialState = {
   petDetails: [],
-  catDetails: [],
+  filteredPetDetails: {},
   isLoadingPetDetails: false
 };
 
@@ -14,9 +15,11 @@ export default function PetDetailsReducer(state = initialState, action) {
         isLoadingPetDetails: action.isLoading
       };
     case PET_DETAILS.FETCH_SUCCESS:
+      const petDetails = action.petDetails;
       return {
         ...state,
-        petDetails: action.petDetails
+        petDetails,
+        filteredPetDetails: filterPetsBySelectedType(petDetails)
       };
     default:
       return state;

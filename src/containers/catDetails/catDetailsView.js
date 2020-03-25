@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => ({
-  catDetails: state.pets.catDetails
+  petDetails: state.pets.petDetails
 });
 
 class CatLeadersView extends Component {
 
   render() {
-    const { catDetails } = this.props;
+    const { petDetails } = this.props;
 
     return (
       <>
         <div>Cat details</div>
-        <div>{catDetails.length}</div>
+        <div>{petDetails.length}</div>
       </>
     );
   }
