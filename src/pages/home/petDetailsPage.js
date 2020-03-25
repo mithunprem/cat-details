@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPetDetails } from '../../store/actions/pets';
+import { Spinner } from 'react-bootstrap';
+import PetNamesList from '../../components/petNamesList/petNamesListView';
+import '../../styles/petDetails.scss';
 
 const mapStateToProps = state => ({
   isLoading: state.pets.isLoadingPetDetails,
@@ -20,29 +23,27 @@ class PetDetailsPage extends Component {
   }
 
   render() {
-    const { filteredPetDetails, petType, ownerGenders } = this.props;
-    if(!Object.keys(filteredPetDetails).length > 0) return null;
+    const { isLoading, filteredPetDetails, petType, ownerGenders } = this.props;
 
     return (
-      <div>
-        <h3>{petType} Details</h3>
-        {
-          ownerGenders.map(ownerGender => {
-            return (
-              <div key={`${ownerGender}`}>
-                <div>{ownerGender}</div>
-                <br />
-                <div>
-                {filteredPetDetails[ownerGender].map(({ name }) => {
-                    return (<div key={`${ownerGender}-${name}`}>{name}</div>)
-                  })}
-                </div>
-                <br />
-              </div>
-            )
-          })
-        }
-      </div>
+      isLoading ?
+        <Spinner animation="border" />
+        :
+        (
+          <div className="pet-details-wrapper">
+            <h4 className="pet-type-header">{petType} Details</h4>
+            {
+              ownerGenders.map(ownerGender => {
+                return (
+                  <div key={ownerGender}>
+                    <h5>{ownerGender}</h5>
+                    <PetNamesList petDetails={filteredPetDetails[ownerGender]}/>
+                  </div>
+                )
+              })
+            }
+          </div>
+        )
     )
   }
 }
