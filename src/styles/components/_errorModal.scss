@@ -1,0 +1,14 @@
+.error-wrapper {
+  padding: 1rem;
+
+  .toast {
+    max-width: 100%;
+    background-color: #d8d7d7d9;
+
+    .toast-header {
+      justify-content: space-between;
+      background-color: #d24141;
+      color: #ffffff;
+    }
+  }
+}
