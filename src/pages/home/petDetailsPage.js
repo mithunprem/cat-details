@@ -35,7 +35,7 @@ class PetDetailsPage extends Component {
               ownerGenders.map(ownerGender => {
                 return (
                   <div key={ownerGender}>
-                    <h5>{ownerGender}</h5>
+                    <h5 title="Owner's Gender">{ownerGender}</h5>
                     <PetNamesList petDetails={filteredPetDetails[ownerGender]}/>
                   </div>
                 )
