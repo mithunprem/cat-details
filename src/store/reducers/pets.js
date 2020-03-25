@@ -50,7 +50,7 @@ export default function PetDetailsReducer(state = initialState, action) {
   5. Set the now filtered, sorted pets array against the gender.
   6. Return from the function once data for all genders are obtained.
 */
-const filterPetsBySelectedType = (petDetails, petTypeToFilterBy, ownerGenders) => {
+export const filterPetsBySelectedType = (petDetails, petTypeToFilterBy, ownerGenders) => {
   // Dont bother proceeding further if petDetails are not available.
   if (!petDetails) return null;
 
