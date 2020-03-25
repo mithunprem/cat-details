@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchPetDetails } from '../../store/actions/pets';
 import { bindActionCreators } from 'redux';
 import PageHeader from '../../components/header/headerView';
+import CatDetailsView from '../../containers/catDetails/catDetailsView';
 
 const mapStateToProps = state => ({
   isLoading: state.pets.isLoadingPetDetails
@@ -24,6 +25,7 @@ class PetDetailsPage extends Component {
     return (
       <>
         <PageHeader />
+        <CatDetailsView />
       </>
     )
   }
